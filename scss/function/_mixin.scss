@@ -1,0 +1,57 @@
+@mixin font($font-size, $font-weight, $letter-spacing) {
+    font-size: $font-size;
+    font-weight: $font-weight;
+    letter-spacing: $letter-spacing;
+}
+
+@mixin triangle($size,$color) {
+    width: 0px;
+    height: 0px;
+    border: $size solid;
+    border-color: transparent $color transparent transparent ;
+    transform: rotate(-45deg);
+    position: absolute;
+    top: 3px;
+    left: -40px;
+}
+
+@mixin margin-b-last-child($size){
+    margin-bottom: $size;
+    &:last-child{
+        margin-bottom: 0px;
+    }
+}
+
+@mixin margin-r-last-child($size){
+    margin-right: $size;
+    &:last-child{
+        margin-right: 0px;
+    }
+}
+
+@mixin line($width,$height,$color){
+    display: block;
+    width: $width;
+    height: $height;
+    background-color: $color;
+}
+
+@mixin circle($size,$color){
+    display: block;
+    width: $size;
+    height: $size;
+    border-radius: 50%;
+    background-color: $color;
+}
+
+@mixin circle-hollow($size,$thickness,$color){
+    display: block;
+    width: $size;
+    height: $size;
+    border-radius: 50%;
+    border: $thickness solid $color;
+}
+
+@mixin animation($name, $delay) {
+    animation: $name 12s $delay ease-in-out infinite;
+}

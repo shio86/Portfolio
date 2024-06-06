@@ -1,0 +1,884 @@
+@use "./reset";
+@use "./font";
+@use "./function/index" as *;
+@use "../scss/var/index" as *;
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap');
+
+@font-face {
+	font-family: "Gotham";
+	src: url(../font/Gotham-XLight.otf);
+}
+
+@font-face {
+	font-family: "NymphaTrial";
+	src: url(../font/NymphaTrial-Regular.otf);
+}
+
+// html{
+// 	@media (min-width: 1919px) {
+// 		zoom: 1.33;
+// 	}
+// 	@media (max-width: 1900px) {}
+// 	@media (min-width: 1401px) {}
+// 	@media (max-width: 1400px) {}
+// }
+
+body {
+	font-family: "Noto Sans TC", sans-serif, "Gotham";
+}
+
+/* 選單 */
+#menu {
+	display: flex;
+	position: fixed;
+	z-index: 99;
+
+	#main-menu {
+		height: calc(100vh - 100px);
+		width: calc(360px - 100px);
+		box-shadow: 1px 0px 30px rgba(0, 0, 0, .1);
+		padding: 50px;
+		background-color: #fff;
+
+		display: flex;
+		justify-content: space-between;
+
+		.left {
+			display: flex;
+			align-items: center;
+			flex-direction: column;
+
+			span {
+				display: block;
+				width: 0.5px;
+				height: 45vh;
+				margin-bottom: 5vh;
+				background-color: black;
+			}
+		}
+
+		.right {
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			align-items: end;
+			text-align: right;
+
+			.home {
+				width: 25px;
+			}
+
+			.main {
+				display: flex;
+				flex-direction: column;
+				align-items: flex-end;
+
+				.text {
+					@include margin-b-last-child(40px);
+
+					.title {
+						display: flex;
+						align-items: center;
+						// margin-bottom: 30px;
+						@include margin-b-last-child(30px);
+
+						h4 {
+							margin-right: 15px;
+						}
+
+						h3 {
+							position: relative;
+
+							&::after {
+								position: absolute;
+								@extend %beforeafter;
+								width: 100%;
+								height: 2px;
+								background-color: black;
+
+								right: 0px;
+								bottom: -10px;
+								opacity: 0;
+
+								transition: all .3s;
+							}
+						}
+
+						&:hover {
+							h3 {
+								&::after {
+									opacity: 1;
+								}
+							}
+						}
+					}
+
+					.sub {
+
+						a {
+							display: flex;
+							justify-content: flex-end;
+							@include margin-b-last-child(8px);
+
+							&:hover {
+								h5 {
+									&::before {
+										opacity: 1;
+									}
+								}
+							}
+
+							h5 {
+								position: relative;
+
+								&::before {
+									@extend %beforeafter;
+									opacity: 0;
+									@include triangle(6px, black);
+									transition: all .3s;
+								}
+							}
+						}
+
+					}
+				}
+
+			}
+
+		}
+	}
+
+	#works-menu {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+
+		background-color: rgba($color: #000000, $alpha: .8);
+		border-radius: 0 30px 30px 0;
+		padding: 30px;
+		color: #fff;
+
+		backdrop-filter: blur(15px);
+
+		a {
+			color: #fff;
+		}
+
+		.main-category {
+			h3 {
+				margin-bottom: 10px;
+			}
+
+			.sub-category {
+				@include margin-b-last-child(15px);
+
+				h4 {
+					color: #00FFFF;
+					margin-bottom: 8px;
+				}
+
+				.l-10-15 {
+					@include margin-b-last-child(6px);
+				}
+			}
+		}
+
+		display: none;
+	}
+
+}
+
+// scroll-bar
+// #scroll-bar {
+// 	position: absolute;
+// 	top: 0;
+// 	right: 20px;
+// 	width: 16px;
+// 	height: 100%;
+// 	background: rgba(0, 0, 0, 0.1);
+
+// 	.scroll-thumb {
+// 		position: absolute;
+// 		top: 0;
+// 		// right: 0;
+// 		width: 100%;
+// 		height: 50px; /* 滾動條滑塊的初始高度 */
+// 		background: rgba(0, 0, 0, 0.4);
+// 		cursor: pointer;
+// 		border-radius: 8px;
+// 	}
+// }
+
+::-webkit-scrollbar {
+	display: none;
+	position: absolute;
+	width: 7px;
+	right: 50px;
+
+	&-button {
+		display: none;
+	}
+
+	&-thumb {
+		border-radius: 10px;
+		background-color: rgba(0, 0, 0, 1);
+	}
+
+	&-track {
+		background: linear-gradient(to right, transparent 43%, #000 44%, #000 56%, transparent 57%);
+		margin: 20vh 0;
+	}
+}
+
+// breadcrumbs
+.breadcrumbs {
+	display: flex;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	bottom: 5%;
+	color: $gray;
+
+	a {
+		height: 15px;
+		border: 1px solid transparent;
+		transition: all .3s ease-in-out;
+		color: $gray;
+
+		&:hover {
+			border-bottom: 1px solid $gray;
+		}
+	}
+}
+
+// 星星裝飾
+.stars {
+	position: absolute;
+	z-index: -1;
+}
+
+// 直式標題
+.title-straight {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	height: 70%;
+
+	h3 {
+		writing-mode: vertical-rl;
+	}
+
+	.line {
+		@include line(1px, 20%, #000);
+	}
+}
+
+// content
+.content-bg {
+	// padding-right: 50px;
+	// background-color: aquamarine;
+
+	.corner {
+		position: absolute;
+		z-index: 90;
+		transition: all 0.3s ease-in-out;
+		background-color: #000;
+		mask-size: cover;
+	}
+
+	.left-corner{
+		left: var(--main-menu-width);
+		mask-image: url(../img/corner-left.svg);
+
+		img{
+			width: 375px;
+			opacity: 0;
+		}
+	}
+
+	.right-corner{
+		right: 0;
+		bottom: 0;
+		mask-image: url(../img/corner-right.svg);
+
+		img{
+			width: 100px;
+			opacity: 0;
+		}
+	}
+
+	.contact-corner{
+		background-color: #fff;
+	}
+
+
+}
+
+#content {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: end;
+
+	// overflow-x: hidden;
+	// overflow-y: scroll;
+	// scroll-snap-type: y mandatory;
+
+	#content-main {
+		overflow-x: hidden;
+		overflow-y: scroll;
+		scroll-snap-type: y mandatory;
+		// margin-right: calc(100% - 100vw);
+		width: calc(100vw - var(--main-menu-width));
+
+		section {
+			height: 100vh;
+			// background-color: antiquewhite;
+			width: 100%;
+			position: relative;
+			scroll-snap-align: start;
+		}
+
+		#anchor-menu {
+			display: flex;
+			z-index: 99;
+			width: 50%;
+			text-align: right;
+			position: fixed;
+			top: 5%;
+			right: calc((100vw - var(--main-menu-width)) / 2);
+			transform: translateX(50%);
+
+			.item {
+				flex: 1;
+				position: relative;
+				@include margin-r-last-child(80px);
+				transition: all .3s ease-in-out;
+
+				&::before {
+					@extend %beforeafter;
+					@include triangle(8px, $gray);
+					left: -8px;
+					top: 16px;
+					transition: all .3s;
+				}
+
+				&:hover {
+					&::before {
+						border-color: transparent $hover transparent transparent;
+					}
+				}
+
+				h3 {
+					margin-bottom: 5px;
+				}
+			}
+		}
+
+		// 首頁
+		#cover {
+			overflow-y: hidden;
+
+			.circle {
+				display: block;
+				width: 850px;
+				height: 850px;
+				background-color: #808080;
+				border-radius: 50%;
+
+				position: absolute;
+				top: 15%;
+				right: 50%;
+				transform: translateX(50%);
+				z-index: -2;
+			}
+
+			.stars-right {
+				width: 315px;
+				right: 50px;
+				bottom: 50px;
+				transform: rotate(180deg);
+			}
+
+			.stars-left {
+				width: 200px;
+				left: 170px;
+				top: 250px;
+			}
+
+			.name {
+				position: absolute;
+				width: 90%;
+				right: 50%;
+				bottom: 5%;
+				transform: translate(50%);
+				z-index: 1;
+
+				p {
+					&:last-child {
+						text-align: right;
+					}
+				}
+			}
+
+			.motto {
+				position: relative;
+				z-index: 2;
+				height: 100%;
+
+				div {
+					background-color: #000;
+					width: 35px;
+
+					display: flex;
+					align-items: end;
+					justify-content: flex-end;
+
+					position: absolute;
+					transform: translate(0%, -50%);
+				}
+
+				p {
+					writing-mode: vertical-lr;
+					color: #fff;
+					letter-spacing: .5em;
+					margin: 5px;
+				}
+
+				.item-1 {
+					height: 400px;
+					left: 8%;
+					top: 50%;
+				}
+
+				.item-2 {
+					height: 270px;
+					left: 13%;
+					top: 70%;
+				}
+			}
+		}
+
+		// 自我介紹
+		#about {
+			display: flex;
+			width: 80%;
+			margin: 0 auto;
+			align-items: center;
+			justify-content: space-between;
+
+			.photo {
+				height: 70%;
+				position: relative;
+				width: 100%;
+				display: flex;
+				align-items: center;
+
+				.stars-left {
+					width: 260px;
+					left: -40px;
+					bottom: 20px;
+					transform: rotateY(180deg) rotate(180deg);
+				}
+
+				.stars-right {
+					width: 200px;
+					right: -10px;
+					top: 20px;
+					transform: rotateY(180deg);
+				}
+			}
+
+			.text {
+				height: 70%;
+				width: 100%;
+
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				margin-left: 65px;
+
+				.name {
+					margin-top: 30px;
+					display: flex;
+					justify-content: space-between;
+					align-items: end;
+				}
+
+				.school {
+					.item {
+						display: flex;
+						align-items: center;
+						@include margin-b-last-child(35px);
+
+						img {
+							width: 22px;
+							margin-right: 35px;
+						}
+					}
+				}
+
+				.biography {
+					p {
+						line-height: 2em;
+					}
+				}
+			}
+		}
+
+		// 工作經歷
+		#work-experience {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin: 0 auto;
+
+			.stars-left {
+				width: 240px;
+				transform-origin: top left;
+				transform: translateY(100%) rotate(-90deg);
+				left: 0;
+				bottom: 0;
+			}
+
+			.stars-right {
+				width: 460px;
+				transform-origin: top left;
+				transform: translateX(100%) rotate(90deg);
+				right: 0;
+				top: 0;
+			}
+
+			.main {
+				position: relative;
+				height: 70%;
+				margin-left: 150px;
+
+				.time-line {
+					@include line(1px, 100%, #000);
+					position: absolute;
+					left: 6px;
+				}
+
+				.text {
+					display: flex;
+					flex-direction: column;
+					justify-content: space-between;
+					height: 100%;
+
+					.item {
+						display: flex;
+
+						.circle {
+							@include circle(12px, #000);
+						}
+
+						h5 {
+							margin: 0 30px;
+						}
+
+						.works-detail {
+							h2 {
+								margin-bottom: 15px;
+							}
+
+							p {
+								line-height: 2em;
+							}
+
+							ul {
+								list-style: decimal;
+								line-height: 2em;
+							}
+						}
+					}
+
+				}
+			}
+		}
+
+		// 專長
+		#expertise {
+			overflow-y: hidden;
+			display: flex;
+			align-items: center;
+
+			.stars-left{
+				position: absolute;
+				width: 450px;
+				left: 0;
+				bottom: 0;
+				transform-origin: left top;
+				transform: rotate(-90deg) translateX(-58%);
+				z-index: 1;
+				opacity: .6;
+			}
+
+			.stars-right{
+				position: absolute;
+				width: 300px;
+				right: 0;
+				top: 0;
+				transform: rotateY(180deg);
+				z-index: 1;
+				opacity: .6;
+			}
+			
+			.circle {
+				@include circle(980px, #000);
+				position: absolute;
+				top: 50%;
+				left: -25%;
+				transform: translateY(-50%);
+				overflow: hidden;
+
+				.classification {
+					width: 417px;
+					height: 290px;
+					// border:1px solid #fff;
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					overflow: hidden;
+					display: flex;
+					flex-direction: column;
+					align-items: flex-end;
+
+					.circle-hollow {
+						@include circle-hollow(834px, 1px, #fff);
+						position: absolute;
+						transform: translateY(-50%);
+						right: 0;
+					}
+				}
+
+				.name-list {
+					position: absolute;
+					width: 417px;
+					height: 290px;
+					top: 50%;
+					left: 50%;
+
+					.name {
+						color: #fff;
+						display: flex;
+						justify-content: flex-end;
+						align-items: center;
+						position: absolute;
+
+						h3{
+							transition: all .3s ease-in-out;
+						}
+
+						.name-circle {
+							@include circle(12px, #fff);
+							margin-left: 20px;
+						}
+
+						&:hover{
+							h3{
+								color: $hover;
+							}
+
+						}
+					}
+
+					.btn-graphic {
+						right: -5px;
+						top: -10px;
+					}
+
+					.btn-illustration {
+						right: 24px;
+						top: 50%;
+					}
+
+					.btn-uiux {
+						right: 111px;
+						bottom: -10px;
+					}
+				}
+			}
+
+			.main {
+				height: 70%;
+				width: 80%;
+				margin: 0 auto;
+				display: flex;
+				justify-content: space-between;
+
+
+				.title-straight {
+					color: #fff;
+					height: 100%;
+					z-index: 1;
+
+					.line {
+						background-color: #fff;
+					}
+				}
+
+				.list{
+					overflow-x: hidden;
+					overflow-y: scroll;
+					scroll-snap-type: y mandatory;
+					.text {
+						display: flex;
+						flex-direction: column;
+						align-items: flex-end;
+						justify-content: space-between;
+						height: 100%;
+						scroll-snap-align: start;
+	
+						h2 {
+							margin-top: 30px;
+							z-index: 1;
+						}
+	
+						h3 {
+							color: $light-gray;
+						}
+	
+						.software {
+							display: flex;
+	
+							.item {
+								@include circle-hollow(66px, 1px, #000);
+								display: flex;
+								justify-content: center;
+								align-items: center;
+								@include margin-r-last-child(18px);
+	
+								.degree {
+									@include circle-hollow(50px, 5px, #000);
+									display: flex;
+									justify-content: center;
+									align-items: center;
+									border-top: 5px solid $medium-gray;
+									transform: rotate(45deg);
+	
+									.name {
+										@include font(22px, 700, 0.02em);
+										transform: rotate(-45deg);
+										text-align: center;
+									}
+
+									.so-long{
+										font-size: 12px;
+									}
+								}
+
+								.level-1{
+									border-right: 5px solid $medium-gray;
+									border-bottom: 5px solid $medium-gray;
+								}
+
+								.level-2{
+									border-right: 5px solid $medium-gray;
+								}
+							}
+						}
+	
+						li {
+							@include margin-b-last-child(10px);
+							text-align: right;
+						}
+					}
+				}
+				
+			}
+		}
+
+		// 聯絡
+		#contact{
+			background-color: #000;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			.bg-stars{
+				position: absolute;
+				width: 90%;
+				height: 90%;
+				background-image: url(../img/stars-w.svg);
+				background-size: contain;
+				background-repeat: no-repeat;
+				background-position: center;
+			}
+
+			.big-star{
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translateY(-50%) translateX(-50%) rotate(15deg);
+				width: 1200px;
+				height: 1200px;
+				background: rgba($color: #fff, $alpha: .15);
+				// opacity: .2;
+				mask-image: url(../img/star-mask.svg);
+				mask-repeat: no-repeat;
+
+				backdrop-filter: blur(5px);
+			}
+
+			.square{
+				z-index: 1;
+				width: calc(230px - 90px);
+				height: calc(230px - 90px);
+				background-color: #fff;
+				border-radius: 50px 0 0 0;
+				padding: 45px;
+
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+
+				position: absolute;
+				right: 100px;
+				bottom: 70px;
+
+				&>div{
+					display: flex;
+					justify-content: space-between;
+					align-items: flex-end;
+				}
+
+				h3{
+					@include font(50px,300,0)
+				}
+			}
+
+			ul{
+				z-index: 2;
+
+				li{
+					@include margin-b-last-child(60px);
+				}
+
+				a{
+					display: flex;
+					align-items: center;
+
+					&:hover{
+						h4{
+							color: $hover;
+						}
+					}
+				}
+
+				img{
+					width: 30px;
+					margin-right: 90px;
+				}
+
+				h4{
+					color: #fff;
+					transition: all .3s ease-in-out;
+				}
+			}
+		}
+	}
+}

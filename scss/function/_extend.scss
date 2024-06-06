@@ -1,0 +1,8 @@
+@use "../function/mixin" as*;
+@use "../var/index" as *;
+
+%beforeafter {
+    content: "";
+    display: block;
+}
+
