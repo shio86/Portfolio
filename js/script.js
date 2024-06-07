@@ -48,39 +48,39 @@ observer.observe(expertise);
 
 // 滑動
 // menu
-// const menuBtn = document.querySelectorAll("#menu a")
-// // console.log(btnExpertise)
-// menuBtn.forEach((e) => {
-//     // console.log(e)
-//     e.addEventListener("click", () => {
-//         var sectionId = e.getAttribute("data-id")
-//         // console.log(sectionId)
-//         var sectionhref = document.querySelector(sectionId)
-//         sectionhref.scrollIntoView({ behavior: "smooth" })
-//     })
-// })
+const menuBtn = document.querySelectorAll("#menu a")
+// console.log(btnExpertise)
+menuBtn.forEach((e) => {
+    // console.log(e)
+    e.addEventListener("click", () => {
+        var sectionId = e.getAttribute("data-id")
+        // console.log(sectionId)
+        var sectionhref = document.querySelector(sectionId)
+        sectionhref.scrollIntoView({ behavior: "smooth" })
+    })
+})
 
 // test
-const menuBtn = document.querySelectorAll("#menu a");
+// const menuBtn = document.querySelectorAll("#menu a");
 
-menuBtn.forEach((e) => {
-    e.addEventListener("click", () => {
-        var sectionId = e.getAttribute("data-id");
-        var targetHtml = e.getAttribute("data-html");
-        var sectionhref = document.querySelector(sectionId)
+// menuBtn.forEach((e) => {
+//     e.addEventListener("click", () => {
+//         var sectionId = e.getAttribute("data-id");
+//         var targetHtml = e.getAttribute("data-html");
+//         var sectionhref = document.querySelector(sectionId)
 
-        if (sectionId && targetHtml) {
-            window.location.href = targetHtml;
+//         if (sectionId && targetHtml) {
+//             window.location.href = targetHtml;
 
-            sectionhref.scrollIntoView({ behavior: "smooth" })
-        } else if (sectionId) {
-            sectionhref.scrollIntoView({ behavior: "smooth" })
-        }
+//             sectionhref.scrollIntoView({ behavior: "smooth" })
+//         } else if (sectionId) {
+//             sectionhref.scrollIntoView({ behavior: "smooth" })
+//         }
 
-        console.log(sectionId)
-        console.log(targetHtml)
-    });
-});
+//         console.log(sectionId)
+//         console.log(targetHtml)
+//     });
+// });
 
 // anchor
 const anchorBtn = document.querySelectorAll("#anchor-menu a")
