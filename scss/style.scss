@@ -30,7 +30,7 @@
 // }
 
 body {
-	font-family: "Noto Sans TC", sans-serif, "Gotham";
+	font-family: "Noto Sans TC", sans-serif, "Gotham","NymphaTrial","NewYork";
 }
 
 /* 選單 */
@@ -338,8 +338,9 @@ body {
 	// 錨點選單
 	#anchor-menu {
 		display: flex;
-		z-index: 99;
+		z-index: 50;
 		width: 50%;
+		min-width: 720px;
 		text-align: right;
 		position: fixed;
 		top: 5%;
@@ -1018,7 +1019,7 @@ body {
 		}
 
 		// 作品-平面
-		#works-graphic-logo-cover {
+		.works-cover {
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
@@ -1096,7 +1097,7 @@ body {
 					width: 400px;
 					top: 50%;
 					left: 55%;
-					transform-origin: 15% 50%;
+					transform-origin: 50% 50%;
 					transform: translateX(-50%) translateY(-50%) rotate(20deg);
 				}
 			}
@@ -1117,14 +1118,27 @@ body {
 			}
 		}
 
+		// 作品-平面-個別調整
+		#works-graphic-logo-cover {
+			.bg {
+				opacity: .4;
+				position: absolute;
+				width: 400px;
+				top: 50%;
+				left: 55%;
+				transform-origin: 15% 50%;
+				transform: translateX(-50%) translateY(-50%) rotate(20deg);
+			}
+		}
+
 		// 作品-平面-內頁
-		.works-graphic-logo-section{
+		.works-section-colorful {
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
 			align-items: center;
 
-			.bg{
+			.bg {
 				display: block;
 				width: 100%;
 				height: 100%;
@@ -1136,7 +1150,7 @@ body {
 				background-color: #B6E0D5;
 				clip-path: polygon(80% 0, 100% 0, 100% 100%, 20% 100%);
 
-				p{
+				p {
 					position: absolute;
 					left: 70%;
 					top: 0;
@@ -1144,31 +1158,35 @@ body {
 				}
 			}
 
-			.main{
+			.main {
 				width: 70%;
+				min-width: 820px;
+				max-width: 900px;
 				height: 70%;
 				display: flex;
 				justify-content: space-between;
 				z-index: 1;
 
-				.left{
+				.left {
 					display: flex;
 					flex-direction: column;
 					justify-content: space-between;
-					.text{
+
+					.text {
 						display: flex;
 						flex-direction: column;
 						justify-content: space-between;
 						align-items: flex-start;
-						.title{
+
+						.title {
 							position: relative;
 							margin-bottom: 90px;
 
-							h2{
+							h2 {
 								margin-bottom: 20px;
 							}
 
-							img{
+							img {
 								position: absolute;
 								left: -55px;
 								top: -50px;
@@ -1178,27 +1196,27 @@ body {
 							}
 						}
 
-						p{
+						p {
 							width: 240px;
 							line-height: 2.2em;
 						}
 					}
 
-					.logo{
+					.logo {
 						height: 70px;
 						width: fit-content;
 					}
 				}
 
-				.right{
+				.right {
 					display: flex;
 					align-items: flex-end;
 
-					img{
-						filter:drop-shadow(4px 4px 8px rgba(0, 0, 0, .1));
+					img {
+						filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, .1));
 					}
 
-					.card{
+					.card {
 						margin-right: 35px;
 						display: flex;
 						flex-direction: column;
@@ -1206,59 +1224,65 @@ body {
 						height: 100%;
 						align-items: center;
 
-						img{
-							width: 135px;
-							@include margin-b-last-child(35px);
+						.img {
+							img {
+								width: 135px;
+								object-fit: contain;
+								@include margin-b-last-child(35px);
+							}
 						}
 
-						.ticket-list{
+						.ticket-list {
 							display: flex;
 
-							.ticket{
-								p{
-									@include font(8px,300,0.15em);
+							.ticket {
+								p {
+									@include font(8px, 300, 0.15em);
 								}
-	
-								span{
+
+								span {
 									display: block;
 									width: 45px;
 									height: 13px;
 									background-color: #1D2323;
 									margin: 10px 0;
 								}
-	
-								ul{
+
+								ul {
 									@include margin-b-last-child(5px);
-									li{
+
+									li {
 										display: flex;
 										justify-content: space-between;
 										width: 30px;
 										@include margin-b-last-child(3px);
 									}
 								}
-								
+
 							}
 
-							.t-2{
-								span{
+							.t-2 {
+								span {
 									background-color: #5C848E;
 								}
 							}
 
-							.t-3{
-								span{
+							.t-3 {
+								span {
 									background-color: #DECDC3;
 								}
 							}
 						}
 
-						
+
 					}
 
-					.envelope{
+					.envelope {
 						height: 100%;
-						img{
+
+						img {
 							height: 100%;
+							object-fit: contain;
 						}
 					}
 				}
@@ -1267,82 +1291,103 @@ body {
 		}
 
 		// 作品-平面-內頁-個別調整
-		#leogifts{
-			.bg{
+		#ethergifts {
+			.card {
+				.img{
+					height: 100%;
+					display: flex;
+					flex-direction: column;
+					justify-content: space-between;
+					img {
+						width: 100%;
+						max-height: 46%;
+						flex: 1;
+						@include margin-b-last-child(0);
+					}
+				}
+			}
+		}
+
+		#leogifts {
+			.bg {
 				background-color: #A0B3B5;
 			}
 
-			.card{
-				img{
+			.card {
+				img {
 					width: 220px;
 				}
 			}
 		}
 
-		#leotech{
+		#leotech {
 			background-color: #000;
-			p,h2,h3{
+
+			p,
+			h2,
+			h3 {
 				color: #fff;
 			}
 
-			.bg{
+			.bg {
 				background-color: #777777;
 			}
 
-			.card{
-				img{
+			.card {
+				img {
 					width: 220px;
 				}
 
-				.t-1{
-					span{
+				.t-1 {
+					span {
 						background-color: #3E3A39;
 					}
 				}
 
-				.t-2{
-					span{
+				.t-2 {
+					span {
 						background-color: #71C6D4;
 					}
 				}
 
-				.t-3{
-					span{
+				.t-3 {
+					span {
 						background-color: #FFFFFF;
 					}
 				}
 			}
 		}
 
-		#chiwuhaiexpress{
-			.bg{
+		#chiwuhaiexpress {
+			.bg {
 				background-color: #2F7793;
 			}
 
-			.card{
-				.img{
+			.card {
+				.img {
 					display: flex;
-					img{
+
+					img {
 						width: 135px;
 						@include margin-b-last-child(0px);
 						@include margin-r-last-child(35px);
 					}
 				}
 
-				.t-1{
-					span{
-						background-color: #0E4668 ;
+				.t-1 {
+					span {
+						background-color: #0E4668;
 					}
 				}
 
-				.t-2{
-					span{
+				.t-2 {
+					span {
 						background-color: #79C6BA;
 					}
 				}
 
-				.t-3{
-					span{
+				.t-3 {
+					span {
 						background-color: #EFF3CB;
 					}
 				}

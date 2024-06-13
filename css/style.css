@@ -382,7 +382,7 @@ a {
   src: url(../font/NewYork\ PERSONAL\ USE.otf);
 }
 body {
-  font-family: "Noto Sans TC", sans-serif, "Gotham";
+  font-family: "Noto Sans TC", sans-serif, "Gotham", "NymphaTrial", "NewYork";
 }
 
 /* 選單 */
@@ -631,8 +631,9 @@ body {
 }
 #content #anchor-menu {
   display: flex;
-  z-index: 99;
+  z-index: 50;
   width: 50%;
+  min-width: 720px;
   text-align: right;
   position: fixed;
   top: 5%;
@@ -1235,14 +1236,14 @@ body {
   opacity: 0.4;
   height: 200px;
 }
-#content .content-main #works-graphic-logo-cover {
+#content .content-main .works-cover {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   overflow: hidden;
 }
-#content .content-main #works-graphic-logo-cover .card {
+#content .content-main .works-cover .card {
   position: relative;
   width: 670px;
   height: 350px;
@@ -1252,23 +1253,23 @@ body {
   display: flex;
   justify-content: space-between;
 }
-#content .content-main #works-graphic-logo-cover .card h3 {
+#content .content-main .works-cover .card h3 {
   color: #fff;
 }
-#content .content-main #works-graphic-logo-cover .card ul {
+#content .content-main .works-cover .card ul {
   z-index: 1;
 }
-#content .content-main #works-graphic-logo-cover .card ul li {
+#content .content-main .works-cover .card ul li {
   margin-bottom: 15px;
 }
-#content .content-main #works-graphic-logo-cover .card ul li:last-child {
+#content .content-main .works-cover .card ul li:last-child {
   margin-bottom: 0px;
 }
-#content .content-main #works-graphic-logo-cover .card ul li a {
+#content .content-main .works-cover .card ul li a {
   color: #fff;
   text-align: right;
 }
-#content .content-main #works-graphic-logo-cover .card .star-lefttop {
+#content .content-main .works-cover .card .star-lefttop {
   position: absolute;
   width: 230px;
   left: -90px;
@@ -1276,25 +1277,25 @@ body {
   transform: rotate(-30deg);
   z-index: -1;
 }
-#content .content-main #works-graphic-logo-cover .card .title-card {
+#content .content-main .works-cover .card .title-card {
   position: absolute;
   left: -35px;
   bottom: -40px;
   z-index: 1;
 }
-#content .content-main #works-graphic-logo-cover .card .title-card h2 {
+#content .content-main .works-cover .card .title-card h2 {
   margin-bottom: 30px;
 }
-#content .content-main #works-graphic-logo-cover .card .title-card h2:last-child {
+#content .content-main .works-cover .card .title-card h2:last-child {
   margin-bottom: 0px;
 }
-#content .content-main #works-graphic-logo-cover .card .star-rightbottom {
+#content .content-main .works-cover .card .star-rightbottom {
   position: absolute;
   width: 40px;
   right: 30px;
   bottom: 30px;
 }
-#content .content-main #works-graphic-logo-cover .card .stars {
+#content .content-main .works-cover .card .stars {
   position: absolute;
   right: 0px;
   top: 0px;
@@ -1304,7 +1305,31 @@ body {
   width: 250px;
   opacity: 0.7;
 }
-#content .content-main #works-graphic-logo-cover .card .bg {
+#content .content-main .works-cover .card .bg {
+  opacity: 0.4;
+  position: absolute;
+  width: 400px;
+  top: 50%;
+  left: 55%;
+  transform-origin: 50% 50%;
+  transform: translateX(-50%) translateY(-50%) rotate(20deg);
+}
+#content .content-main .works-cover .title-bg {
+  position: absolute;
+  right: -10px;
+  bottom: -20px;
+  z-index: -1;
+}
+#content .content-main .works-cover .title-bg h2 {
+  text-align: right;
+  -webkit-text-stroke: 0.5px #666666;
+  color: transparent;
+  margin-bottom: 30px;
+}
+#content .content-main .works-cover .title-bg h2:last-child {
+  margin-bottom: 0px;
+}
+#content .content-main #works-graphic-logo-cover .bg {
   opacity: 0.4;
   position: absolute;
   width: 400px;
@@ -1313,28 +1338,13 @@ body {
   transform-origin: 15% 50%;
   transform: translateX(-50%) translateY(-50%) rotate(20deg);
 }
-#content .content-main #works-graphic-logo-cover .title-bg {
-  position: absolute;
-  right: -10px;
-  bottom: -20px;
-  z-index: -1;
-}
-#content .content-main #works-graphic-logo-cover .title-bg h2 {
-  text-align: right;
-  -webkit-text-stroke: 0.5px #666666;
-  color: transparent;
-  margin-bottom: 30px;
-}
-#content .content-main #works-graphic-logo-cover .title-bg h2:last-child {
-  margin-bottom: 0px;
-}
-#content .content-main .works-graphic-logo-section {
+#content .content-main .works-section-colorful {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-#content .content-main .works-graphic-logo-section .bg {
+#content .content-main .works-section-colorful .bg {
   display: block;
   width: 100%;
   height: 100%;
@@ -1346,38 +1356,40 @@ body {
   -webkit-clip-path: polygon(80% 0, 100% 0, 100% 100%, 20% 100%);
           clip-path: polygon(80% 0, 100% 0, 100% 100%, 20% 100%);
 }
-#content .content-main .works-graphic-logo-section .bg p {
+#content .content-main .works-section-colorful .bg p {
   position: absolute;
   left: 70%;
   top: 0;
   line-height: 0.72;
 }
-#content .content-main .works-graphic-logo-section .main {
+#content .content-main .works-section-colorful .main {
   width: 70%;
+  min-width: 820px;
+  max-width: 900px;
   height: 70%;
   display: flex;
   justify-content: space-between;
   z-index: 1;
 }
-#content .content-main .works-graphic-logo-section .main .left {
+#content .content-main .works-section-colorful .main .left {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-#content .content-main .works-graphic-logo-section .main .left .text {
+#content .content-main .works-section-colorful .main .left .text {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
 }
-#content .content-main .works-graphic-logo-section .main .left .text .title {
+#content .content-main .works-section-colorful .main .left .text .title {
   position: relative;
   margin-bottom: 90px;
 }
-#content .content-main .works-graphic-logo-section .main .left .text .title h2 {
+#content .content-main .works-section-colorful .main .left .text .title h2 {
   margin-bottom: 20px;
 }
-#content .content-main .works-graphic-logo-section .main .left .text .title img {
+#content .content-main .works-section-colorful .main .left .text .title img {
   position: absolute;
   left: -55px;
   top: -50px;
@@ -1385,23 +1397,23 @@ body {
   transform: rotate(-20deg);
   z-index: -1;
 }
-#content .content-main .works-graphic-logo-section .main .left .text p {
+#content .content-main .works-section-colorful .main .left .text p {
   width: 240px;
   line-height: 2.2em;
 }
-#content .content-main .works-graphic-logo-section .main .left .logo {
+#content .content-main .works-section-colorful .main .left .logo {
   height: 70px;
   width: -moz-fit-content;
   width: fit-content;
 }
-#content .content-main .works-graphic-logo-section .main .right {
+#content .content-main .works-section-colorful .main .right {
   display: flex;
   align-items: flex-end;
 }
-#content .content-main .works-graphic-logo-section .main .right img {
+#content .content-main .works-section-colorful .main .right img {
   filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.1));
 }
-#content .content-main .works-graphic-logo-section .main .right .card {
+#content .content-main .works-section-colorful .main .right .card {
   margin-right: 35px;
   display: flex;
   flex-direction: column;
@@ -1409,54 +1421,73 @@ body {
   height: 100%;
   align-items: center;
 }
-#content .content-main .works-graphic-logo-section .main .right .card img {
+#content .content-main .works-section-colorful .main .right .card .img img {
   width: 135px;
+  -o-object-fit: contain;
+     object-fit: contain;
   margin-bottom: 35px;
 }
-#content .content-main .works-graphic-logo-section .main .right .card img:last-child {
+#content .content-main .works-section-colorful .main .right .card .img img:last-child {
   margin-bottom: 0px;
 }
-#content .content-main .works-graphic-logo-section .main .right .card .ticket-list {
+#content .content-main .works-section-colorful .main .right .card .ticket-list {
   display: flex;
 }
-#content .content-main .works-graphic-logo-section .main .right .card .ticket-list .ticket p {
+#content .content-main .works-section-colorful .main .right .card .ticket-list .ticket p {
   font-size: 8px;
   font-weight: 300;
   letter-spacing: 0.15em;
 }
-#content .content-main .works-graphic-logo-section .main .right .card .ticket-list .ticket span {
+#content .content-main .works-section-colorful .main .right .card .ticket-list .ticket span {
   display: block;
   width: 45px;
   height: 13px;
   background-color: #1D2323;
   margin: 10px 0;
 }
-#content .content-main .works-graphic-logo-section .main .right .card .ticket-list .ticket ul {
+#content .content-main .works-section-colorful .main .right .card .ticket-list .ticket ul {
   margin-bottom: 5px;
 }
-#content .content-main .works-graphic-logo-section .main .right .card .ticket-list .ticket ul:last-child {
+#content .content-main .works-section-colorful .main .right .card .ticket-list .ticket ul:last-child {
   margin-bottom: 0px;
 }
-#content .content-main .works-graphic-logo-section .main .right .card .ticket-list .ticket ul li {
+#content .content-main .works-section-colorful .main .right .card .ticket-list .ticket ul li {
   display: flex;
   justify-content: space-between;
   width: 30px;
   margin-bottom: 3px;
 }
-#content .content-main .works-graphic-logo-section .main .right .card .ticket-list .ticket ul li:last-child {
+#content .content-main .works-section-colorful .main .right .card .ticket-list .ticket ul li:last-child {
   margin-bottom: 0px;
 }
-#content .content-main .works-graphic-logo-section .main .right .card .ticket-list .t-2 span {
+#content .content-main .works-section-colorful .main .right .card .ticket-list .t-2 span {
   background-color: #5C848E;
 }
-#content .content-main .works-graphic-logo-section .main .right .card .ticket-list .t-3 span {
+#content .content-main .works-section-colorful .main .right .card .ticket-list .t-3 span {
   background-color: #DECDC3;
 }
-#content .content-main .works-graphic-logo-section .main .right .envelope {
+#content .content-main .works-section-colorful .main .right .envelope {
   height: 100%;
 }
-#content .content-main .works-graphic-logo-section .main .right .envelope img {
+#content .content-main .works-section-colorful .main .right .envelope img {
   height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+#content .content-main #ethergifts .card .img {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+#content .content-main #ethergifts .card .img img {
+  width: 100%;
+  max-height: 46%;
+  flex: 1;
+  margin-bottom: 0;
+}
+#content .content-main #ethergifts .card .img img:last-child {
+  margin-bottom: 0px;
 }
 #content .content-main #leogifts .bg {
   background-color: #A0B3B5;
@@ -1467,7 +1498,9 @@ body {
 #content .content-main #leotech {
   background-color: #000;
 }
-#content .content-main #leotech p, #content .content-main #leotech h2, #content .content-main #leotech h3 {
+#content .content-main #leotech p,
+#content .content-main #leotech h2,
+#content .content-main #leotech h3 {
   color: #fff;
 }
 #content .content-main #leotech .bg {
