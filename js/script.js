@@ -60,28 +60,6 @@ menuBtn.forEach((e) => {
     })
 })
 
-// test
-// const menuBtn = document.querySelectorAll("#menu a");
-
-// menuBtn.forEach((e) => {
-//     e.addEventListener("click", () => {
-//         var sectionId = e.getAttribute("data-id");
-//         var targetHtml = e.getAttribute("data-html");
-//         var sectionhref = document.querySelector(sectionId)
-
-//         if (sectionId && targetHtml) {
-//             window.location.href = targetHtml;
-
-//             sectionhref.scrollIntoView({ behavior: "smooth" })
-//         } else if (sectionId) {
-//             sectionhref.scrollIntoView({ behavior: "smooth" })
-//         }
-
-//         console.log(sectionId)
-//         console.log(targetHtml)
-//     });
-// });
-
 // anchor
 const anchorBtn = document.querySelectorAll("#anchor-menu a")
 anchorBtn.forEach((e) => {

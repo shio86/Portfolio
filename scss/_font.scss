@@ -1,6 +1,11 @@
 @use "./function/index" as *;
+@use "./var/index" as *;
 
 // thin 300
+.l-8-15{
+	@include font(8px,300,0.15em);
+}
+
 .l-10-15{
 	@include font(10px,300,0.15em);
 }
@@ -39,6 +44,14 @@
 
 .l-20-25{
 	@include font(20px,300,0.25em);
+}
+
+.l-22-15{
+	@include font(22px,300,0.15em);
+}
+
+.l-30-15{
+	@include font(30px,300,0.15em);
 }
 
 .l-38-15{
@@ -118,5 +131,31 @@
 	color: #CCCCCC;
 }
 
+.nympha-70-10{
+	font-family: "NymphaTrial";
+	@include font(70px,100,0.1em);
+	color: #fff;
+	writing-mode: vertical-lr;
+	transform: rotate(180deg);
+}
 
+.nympha-90-10{
+	font-family: "NymphaTrial";
+	@include font(90px,100,0.1em);
+	color: $gray;
+}
+
+.newyork-70-10{
+	font-family: "NewYork";
+	@include font(70px,100,0.1em);
+	color: #fff;
+	writing-mode: vertical-lr;
+	transform: rotate(180deg);
+}
+
+.newyork-285-5{
+	font-family: "NewYork";
+	@include font(285px,100,0.05em);
+	color: #fff;
+}
 

@@ -21,31 +21,3 @@ menuBtn.forEach((e) => {
     })
 })
 
-// test
-// const menuBtn = document.querySelectorAll("#menu a");
-
-// menuBtn.forEach((e) => {
-//     e.addEventListener("click", () => {
-//         var sectionId = e.getAttribute("data-id");
-//         var targetHtml = e.getAttribute("data-html");
-
-//         if (sectionId && targetHtml) {
-//             window.location.href = targetHtml;
-
-//             setTimeout(() => {
-//                 var sectionhref = document.querySelector(sectionId);
-//                 if (sectionhref) {
-//                     sectionhref.scrollIntoView({ behavior: "smooth" });
-//                 }
-//             }, 500); // 等待页面加载完成后再滚动
-//         }
-
-//         var sectionhref = document.querySelector(sectionId)
-//         sectionhref.scrollIntoView({ behavior: "smooth" })
-
-//         // console.log(targetUrl)
-//         console.log(sectionId)
-//         console.log(targetHtml)
-//     });
-// });
-

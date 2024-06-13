@@ -11,8 +11,6 @@
     border-color: transparent $color transparent transparent ;
     transform: rotate(-45deg);
     position: absolute;
-    top: 3px;
-    left: -40px;
 }
 
 @mixin margin-b-last-child($size){
