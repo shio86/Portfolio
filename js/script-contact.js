@@ -21,3 +21,12 @@ menuBtn.forEach((e) => {
     })
 })
 
+// breadcrumbs a
+const breadcrumbsBtn = document.querySelectorAll(".breadcrumbs a")
+breadcrumbsBtn.forEach((e) => {
+    e.addEventListener("click", () => {
+        var sectionId = e.getAttribute("data-id")
+        var sectionhref = document.querySelector(sectionId)
+        sectionhref.scrollIntoView({ behavior: "smooth", block: "end" })
+    })
+})

@@ -16,19 +16,11 @@ const anchorMenuItem = Array.from(document.querySelectorAll('#anchor-menu .item'
 const content = document.getElementById('content');
 // const contentMain = document.querySelector('.content-main');
 
-const ethergifts = document.getElementById('ethergifts');
-const leogifts = document.getElementById('leogifts');
-const leotech = document.getElementById('leotech');
-const chiwuhaiexpress = document.getElementById('chiwuhaiexpress');
-const personalcard = document.getElementById('personalcard');
-const logoRelatedWorks = document.getElementById('logo-related-works');
-const mike = document.getElementById('mike');
-const kanono = document.getElementById('kanono');
+const lumeWeb = document.getElementById('lume-web');
+const gradientLume = 'linear-gradient(220deg, rgba(238, 179, 208, .3), rgba(137, 209, 239, .3), rgba(164, 213, 190, .3))'
+const portfolioWeb = document.getElementById('portfolio-web');
 
-const worksGraphicLogoSection = Array.from(document.querySelectorAll('#works-graphic-logo section'))
-const worksGraphicStandardSection = Array.from(document.querySelectorAll('#works-graphic-standard section'))
-const worksGraphicBannerSection = Array.from(document.querySelectorAll('#works-graphic-banner section'))
-const worksGraphicAnybearsSection = Array.from(document.querySelectorAll('#works-graphic-anybears section'))
+const worksUiuxfrontendSection = Array.from(document.querySelectorAll('#works-uiuxfrontend section'))
 const contentMain = document.querySelectorAll('.content-main');
 
 const leftCorner = document.getElementById('left-corner');
@@ -44,7 +36,7 @@ function createObserver(target, parentElement, enterColor) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 // 當子層內容進入視口時改變父層元素的背景顏色
-                parentElement.style.backgroundColor = enterColor;
+                parentElement.style.background = enterColor;
             }
 
             if (entry.isIntersecting) {
@@ -57,55 +49,15 @@ function createObserver(target, parentElement, enterColor) {
     observer.observe(target);
 }
 
-createObserver(worksGraphicLogoSection[0], leftCorner, '#000');
-createObserver(worksGraphicLogoSection[0], rightCorner, '#000');
-createObserver(worksGraphicLogoSection[0], anchorMenu, 'flex');
+createObserver(worksUiuxfrontendSection[0], leftCorner, '#000');
+createObserver(worksUiuxfrontendSection[0], rightCorner, '#000');
 
-createObserver(worksGraphicStandardSection[0], leftCorner, '#000');
-createObserver(worksGraphicStandardSection[0], rightCorner, '#000');
-createObserver(worksGraphicStandardSection[0], anchorMenu, 'flex');
+createObserver(lumeWeb, leftCorner, gradientLume);
+createObserver(portfolioWeb, leftCorner, "#2C2C2C");
 
-createObserver(worksGraphicBannerSection[0], leftCorner, '#000');
-createObserver(worksGraphicBannerSection[0], rightCorner, '#000');
-createObserver(worksGraphicBannerSection[0], anchorMenu, 'flex');
 
-createObserver(worksGraphicAnybearsSection[0], leftCorner, '#000');
-createObserver(worksGraphicAnybearsSection[0], rightCorner, '#000');
-createObserver(worksGraphicAnybearsSection[0], anchorMenu, 'flex');
-
-createObserver(ethergifts, leftCorner, '#B6E0D5');
-createObserver(leogifts, leftCorner, '#A0B3B5');
-createObserver(leotech, leftCorner, '#777777');
-createObserver(chiwuhaiexpress, leftCorner, '#2F7793');
-createObserver(personalcard, leftCorner, '#1A1A1A');
-createObserver(logoRelatedWorks, leftCorner, '#000');
-createObserver(logoRelatedWorks, rightCorner, '#000');
-
-createObserver(mike, leftCorner, '#80756F');
-createObserver(kanono, leftCorner, '#C5B1DA');
-
-worksGraphicLogoSection.slice(1).forEach(section => {
-    createObserver(section, anchorMenu, 'none');
-});
-worksGraphicLogoSection.slice(1, 6).forEach(section => {
+worksUiuxfrontendSection.slice(1).forEach(section => {
     createObserver(section, rightCorner, '#fff');
-});
-
-worksGraphicStandardSection.slice(1).forEach(section => {
-    createObserver(section, anchorMenu, 'none');
-    createObserver(section, rightCorner, '#fff');
-});
-
-worksGraphicBannerSection.slice(1).forEach(section => {
-    createObserver(section, anchorMenu, 'none');
-    createObserver(section, leftCorner, '#000');
-    createObserver(section, rightCorner, '#000');
-});
-
-worksGraphicAnybearsSection.slice(1).forEach(section => {
-    createObserver(section, anchorMenu, 'none');
-    createObserver(section, leftCorner, '#000');
-    createObserver(section, rightCorner, '#000');
 });
 
 
@@ -154,15 +106,6 @@ topBtn.addEventListener('click', function () {
         element.scrollTo({
             top: 0,
             behavior: 'smooth'
-        });
-    });
-});
-
-topBtn.addEventListener('click', function () {
-    contentMain.forEach(element => {
-        element.scrollTo({
-            top: 0,
-            behavior: 'smooth' // 添加平滑滾動效果
         });
     });
 });

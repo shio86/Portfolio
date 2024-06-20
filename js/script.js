@@ -8,14 +8,12 @@ document.documentElement.style.setProperty('--main-menu-width', `${mainMenuWidth
 // console.log(mainMenuWidth)
 
 
-
-// 角落陰影變色
-// 獲取父層和子層元素
 const anchorMenu = document.getElementById('anchor-menu');
 const anchorMenuItem = Array.from(document.querySelectorAll('#anchor-menu .item'))
 const content = document.getElementById('content');
 const expertise = document.getElementById('expertise');
 const leftCorner = document.getElementById('left-corner');
+const contentMain = document.querySelectorAll('.content-main');
 
 // 設定 IntersectionObserver 的選項
 const options = {
@@ -70,9 +68,46 @@ anchorBtn.forEach((e) => {
     })
 })
 
+// top-btn
+const topBtn = document.getElementById("top-btn");
+let scrollTimeout;
+
+contentMain.forEach(element => {
+    element.addEventListener('mousemove', function () {
+        if (scrollTimeout) {
+            clearTimeout(scrollTimeout);
+        }
+
+        topBtn.classList.add('show');
+
+        scrollTimeout = setTimeout(function () {
+            topBtn.classList.remove('show');
+        }, 1500);
+    });
+});
+
+topBtn.addEventListener('click', function () {
+    contentMain.forEach(element => {
+        element.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+});
+
 // expertise name-list
 const expertiseBtn = document.querySelectorAll("#expertise a")
 expertiseBtn.forEach((e) => {
+    e.addEventListener("click", () => {
+        var sectionId = e.getAttribute("data-id")
+        var sectionhref = document.querySelector(sectionId)
+        sectionhref.scrollIntoView({ behavior: "smooth", block: "end" })
+    })
+})
+
+// breadcrumbs a
+const breadcrumbsBtn = document.querySelectorAll(".breadcrumbs a")
+breadcrumbsBtn.forEach((e) => {
     e.addEventListener("click", () => {
         var sectionId = e.getAttribute("data-id")
         var sectionhref = document.querySelector(sectionId)
