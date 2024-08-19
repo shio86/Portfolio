@@ -20,17 +20,8 @@
 	src: url(../font/NewYork\ PERSONAL\ USE.otf);
 }
 
-// html{
-// 	@media (min-width: 1919px) {
-// 		zoom: 1.33;
-// 	}
-// 	@media (max-width: 1900px) {}
-// 	@media (min-width: 1401px) {}
-// 	@media (max-width: 1400px) {}
-// }
-
 body {
-	font-family: "Noto Sans TC", sans-serif, "Gotham","NymphaTrial","NewYork";
+	font-family: "Noto Sans TC", sans-serif, "Gotham", "NymphaTrial", "NewYork";
 }
 
 /* 選單 */
@@ -241,19 +232,8 @@ body {
 }
 
 .breadcrumbs-white {
-	display: flex;
-	position: absolute;
-	left: 50%;
-	transform: translateX(-50%);
-	bottom: 5%;
-	color: $gray;
-
 	a {
-		padding: 5px;
-		border: 1px solid transparent;
-		transition: all .3s ease-in-out;
 		color: #fff;
-		// backdrop-filter: blur(3px);
 
 		&:hover {
 			border-bottom: 1px solid #fff;
@@ -280,8 +260,76 @@ body {
 	}
 
 	.line {
-		@include line(1px, 20%, #000);
+		@include line(0.5px, 20%, #000);
 	}
+}
+
+// 色票
+.ticket-list {
+	display: flex;
+
+	.ticket {
+		p {
+			@include font(8px, 300, 0.15em);
+		}
+
+		span {
+			display: block;
+			width: 45px;
+			height: 13px;
+			background-color: #1D2323;
+			margin: 10px 0;
+		}
+
+		ul {
+			@include margin-b-last-child(5px);
+
+			li {
+				display: flex;
+				justify-content: space-between;
+				width: 30px;
+				@include margin-b-last-child(3px);
+			}
+		}
+
+	}
+
+	.t-2 {
+		span {
+			background-color: #5C848E;
+		}
+	}
+
+	.t-3 {
+		span {
+			background-color: #DECDC3;
+		}
+	}
+}
+
+// top btn
+#top-btn {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	border: none;
+	position: fixed;
+	right: 50px;
+	bottom: 50px;
+	background-color: #fff;
+	box-shadow: 3px 3px 10px rgba(0, 0, 0, .2);
+	z-index: 100;
+	cursor: pointer;
+	opacity: 0;
+	transition: all .5s ease-in-out;
+
+	img {
+		height: 50%;
+	}
+}
+
+#top-btn.show {
+	opacity: 1;
 }
 
 // content
@@ -302,7 +350,7 @@ body {
 
 	.corner {
 		position: fixed;
-		z-index: 90;
+		z-index: 70;
 		transition: all 0.3s ease-in-out;
 		background-color: #000;
 		mask-size: cover;
@@ -338,9 +386,9 @@ body {
 	// 錨點選單
 	#anchor-menu {
 		display: flex;
-		z-index: 50;
+		justify-content: space-between;
+		z-index: 80;
 		width: 50%;
-		min-width: 720px;
 		text-align: right;
 		position: fixed;
 		top: 5%;
@@ -348,14 +396,13 @@ body {
 		transform: translateX(50%);
 
 		.item {
-			flex: 1;
 			position: relative;
-			@include margin-r-last-child(80px);
-			transition: all .3s ease-in-out;
+			// @include margin-r-last-child(80px);
 			display: flex;
 			flex-direction: column;
 			justify-content: space-between;
 			align-items: flex-end;
+			width: 135px;
 
 			&::before {
 				@extend %beforeafter;
@@ -379,6 +426,10 @@ body {
 				line-height: 1.5em;
 			}
 		}
+	}
+
+	#anchor-menu.painting-anchor{
+		width: 30%;
 	}
 
 	.content-main {
@@ -584,7 +635,7 @@ body {
 				margin-left: 150px;
 
 				.time-line {
-					@include line(1px, 100%, #000);
+					@include line(.5px, 100%, #000);
 					position: absolute;
 					left: 6px;
 				}
@@ -612,12 +663,12 @@ body {
 							}
 
 							p {
-								line-height: 2em;
+								line-height: 1.6em;
 							}
 
 							ul {
 								list-style: decimal;
-								line-height: 2em;
+								line-height: 1.6em;
 							}
 						}
 					}
@@ -913,8 +964,8 @@ body {
 		#works-table {
 			background-color: #000;
 			display: flex;
-			flex-direction: column;
 			justify-content: center;
+			align-items: center;
 
 			.stars {
 				right: 0;
@@ -944,7 +995,6 @@ body {
 					align-items: flex-end;
 					border-right: 1px solid #fff;
 					height: 100%;
-					width: 230px;
 					padding: 2% 0;
 					@include margin-r-last-child(50px);
 
@@ -955,14 +1005,25 @@ body {
 					.content {
 						display: flex;
 						justify-content: space-between;
-						height: 400px;
+						height: 420px;
 						width: 100%;
+						position: relative;
+						overflow: hidden;
 
 						.text {
 							flex: 1;
+							display: flex;
+							flex-direction: column;
+							flex-wrap: wrap;
+
+							.last {
+								margin-left: 10px
+							}
 
 							.category {
 								@include margin-b-last-child(20px);
+								min-width: 105px;
+
 
 								h3 {
 									color: $hover;
@@ -988,11 +1049,10 @@ body {
 
 						.title {
 							position: relative;
-							overflow: hidden;
-							flex: 1;
 							display: flex;
 							flex-direction: column;
 							align-items: flex-end;
+							width: 100px;
 
 							span {
 								display: block;
@@ -1004,21 +1064,22 @@ body {
 									text-align: right;
 								}
 							}
+						}
 
-							img {
-								position: absolute;
-								right: -30px;
-								bottom: 0;
-								opacity: 0.4;
-								height: 200px;
-							}
+						.illustration {
+							position: absolute;
+							right: -10%;
+							bottom: 0;
+							opacity: 0.4;
+							height: 200px;
+							width: fit-content;
 						}
 					}
 				}
 			}
 		}
 
-		// 作品-平面
+		// 作品-封面
 		.works-cover {
 			display: flex;
 			flex-direction: column;
@@ -1110,7 +1171,7 @@ body {
 
 				h2 {
 					text-align: right;
-					-webkit-text-stroke: 0.5px $gray;
+					-webkit-text-stroke: 0.3px $gray;
 					color: transparent;
 
 					@include margin-b-last-child(30px);
@@ -1118,20 +1179,40 @@ body {
 			}
 		}
 
-		// 作品-平面-個別調整
+		// 作品-封面-個別調整
 		#works-graphic-logo-cover {
 			.bg {
-				opacity: .4;
-				position: absolute;
-				width: 400px;
-				top: 50%;
-				left: 55%;
 				transform-origin: 15% 50%;
-				transform: translateX(-50%) translateY(-50%) rotate(20deg);
 			}
 		}
 
-		// 作品-平面-內頁
+		#works-graphic-banner-cover {
+			.bg {
+				left: 50%;
+				width: 900px;
+			}
+		}
+
+		#works-graphic-anybears-cover {
+			.bg {
+				width: 300px;
+				opacity: .2;
+			}
+		}
+
+		#works-uiuxfrontend-cover {
+			.bg {
+				transform-origin: 15% 50%;
+			}
+		}
+
+		#works-painting-illustration-cover {
+			.bg {
+				transform: translateX(-50%) translateY(-35%) rotate(0deg);
+			}
+		}
+
+		// 作品-內頁
 		.works-section-colorful {
 			display: flex;
 			flex-direction: column;
@@ -1232,49 +1313,6 @@ body {
 							}
 						}
 
-						.ticket-list {
-							display: flex;
-
-							.ticket {
-								p {
-									@include font(8px, 300, 0.15em);
-								}
-
-								span {
-									display: block;
-									width: 45px;
-									height: 13px;
-									background-color: #1D2323;
-									margin: 10px 0;
-								}
-
-								ul {
-									@include margin-b-last-child(5px);
-
-									li {
-										display: flex;
-										justify-content: space-between;
-										width: 30px;
-										@include margin-b-last-child(3px);
-									}
-								}
-
-							}
-
-							.t-2 {
-								span {
-									background-color: #5C848E;
-								}
-							}
-
-							.t-3 {
-								span {
-									background-color: #DECDC3;
-								}
-							}
-						}
-
-
 					}
 
 					.envelope {
@@ -1290,14 +1328,15 @@ body {
 
 		}
 
-		// 作品-平面-內頁-個別調整
+		// 作品-內頁-個別調整
 		#ethergifts {
 			.card {
-				.img{
+				.img {
 					height: 100%;
 					display: flex;
 					flex-direction: column;
 					justify-content: space-between;
+
 					img {
 						width: 100%;
 						max-height: 46%;
@@ -1393,5 +1432,648 @@ body {
 				}
 			}
 		}
+
+		#personalcard {
+			.bg {
+				background-color: #1A1A1A;
+			}
+
+			.personal-card-list {
+				display: flex;
+
+				img {
+					width: 135px;
+					@include margin-r-last-child(35px);
+				}
+			}
+
+			.envelope {
+				@extend %works-computer;
+
+				.phone {
+					width: 100px;
+					height: fit-content;
+					position: absolute;
+					right: 30px;
+					bottom: 0;
+				}
+
+				.computer {
+					width: 100%;
+					height: fit-content;
+				}
+			}
+		}
+
+		#logo-related-works {
+			width: 70%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin: 0 auto;
+
+			.item-list {
+				width: 100%;
+				height: 60%;
+				display: flex;
+				justify-content: space-between;
+				align-content: space-between;
+				flex-wrap: wrap;
+				margin-left: 100px;
+
+				.item {
+					display: flex;
+
+					.ticket-list {
+						zoom: .8;
+					}
+
+					img {
+						height: 100px;
+						width: 100px;
+						object-fit: contain;
+						margin-right: 80px;
+					}
+				}
+
+				.cloudgifts {
+					.t-1 {
+						span {
+							background-color: #393B44;
+						}
+					}
+
+					.t-2 {
+						span {
+							background-color: #8D93AB;
+						}
+					}
+
+					.t-3 {
+						span {
+							background-color: #D6E0F0;
+						}
+					}
+				}
+
+				.lume {
+					.t-1 {
+						span {
+							background-color: #EEB3CF;
+						}
+					}
+
+					.t-2 {
+						span {
+							background-color: #88D0EE;
+						}
+					}
+
+					.t-3 {
+						span {
+							background-color: #A3D4BC;
+						}
+					}
+				}
+
+				.yushi {
+					.t-1 {
+						span {
+							background-color: #B81C22;
+						}
+					}
+
+					.t-2 {
+						span {
+							background-color: #F1BD4C;
+						}
+					}
+
+					.t-3 {
+						span {
+							background-color: #FDEABE;
+						}
+					}
+				}
+
+				.nacl {
+					.t-1 {
+						span {
+							background-color: #CCBDE8;
+						}
+					}
+
+					.t-2 {
+						span {
+							background-color: #D9E5FF;
+						}
+					}
+
+					.t-3 {
+						opacity: 0;
+					}
+				}
+
+				.et {
+					.t-1 {
+						span {
+							background-color: #5B705D;
+						}
+					}
+
+					.t-2 {
+						span {
+							background-color: #B1C8B8;
+						}
+					}
+
+					.t-3 {
+						span {
+							background-color: #EFF5EE;
+						}
+					}
+				}
+
+				.ryuuya {
+					.t-1 {
+						span {
+							background-color: #000000;
+						}
+					}
+
+					.t-2,
+					.t-3 {
+						opacity: 0;
+					}
+				}
+			}
+		}
+
+		#mike {
+			.bg {
+				background-color: #80756F;
+			}
+
+			.envelope {
+				@extend %works-computer;
+
+				.computer {
+					width: 100%;
+					height: fit-content;
+				}
+			}
+		}
+
+		#kanono {
+			.bg {
+				background-color: #C5B1DA;
+			}
+
+			.envelope {
+				@extend %works-computer;
+
+				.computer {
+					width: 100%;
+					height: fit-content;
+				}
+			}
+		}
+
+		// 作品-內頁-banner版型
+		.works-section-banner {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+
+			.stars-left {
+				width: 270px;
+				transform: rotateX(180deg);
+				left: 0;
+				bottom: 0;
+			}
+
+			.stars-right {
+				width: 410px;
+				transform: rotateY(180deg);
+				right: 0;
+				top: 0;
+			}
+
+			.main {
+				width: 80%;
+				height: 70%;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+
+				.title {
+					display: flex;
+					width: 100%;
+					justify-content: space-between;
+					align-items: flex-end;
+
+					.number {
+						display: flex;
+						align-items: center;
+
+						.date {
+							writing-mode: vertical-rl;
+							margin-right: 30px;
+						}
+					}
+
+					.content {
+						width: 420px;
+						height: fit-content;
+						text-align: right;
+						line-height: 2em;
+						display: flex;
+						border-right: 4px solid #000;
+						padding-right: 50px;
+					}
+				}
+
+				.picture {
+					position: relative;
+
+					img {
+						width: 100%;
+						aspect-ratio: 47 / 17;
+						border-radius: 45px;
+						object-fit: cover;
+						object-position: center;
+					}
+
+					&::before {
+						@extend %beforeafter;
+						position: absolute;
+						right: 5px;
+						top: 5px;
+						border-radius: 45px;
+						width: 100%;
+						height: 100%;
+						border: 1px solid #000;
+					}
+				}
+
+				.picture-anybears {
+					img {
+						object-fit: contain;
+						background-color: #fff;
+					}
+
+					&::before {
+						right: 0px;
+						top: 0px;
+					}
+				}
+			}
+
+			.title-bg {
+				position: absolute;
+				right: -10px;
+				bottom: -20px;
+				z-index: -1;
+
+				h2 {
+					text-align: right;
+					-webkit-text-stroke: 0.3px $gray;
+					color: transparent;
+
+					@include margin-b-last-child(30px);
+				}
+			}
+		}
+
+		// 作品-內頁-插畫版型
+		.works-section-illustration {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			.stars-left {
+				width: 270px;
+				transform: rotateX(180deg);
+				left: 0;
+				bottom: 0;
+			}
+
+			.stars-right {
+				width: 410px;
+				transform: rotateY(180deg);
+				right: 0;
+				top: 0;
+			}
+
+			.main {
+				display: flex;
+				justify-content: space-between;
+				width: 70%;
+				height: 70%;
+
+				.title {
+					display: flex;
+					flex-direction: column;
+					justify-content: space-between;
+
+					.date {
+						position: relative;
+
+						.star {
+							width: 76px;
+							position: absolute;
+							left: -40px;
+							top: -30px;
+							transform: rotate(70deg);
+							z-index: -1;
+						}
+					}
+
+					.line{
+						width: .5px;
+						height: 200px;
+						background-color: #000;
+					}
+
+					.content-title{
+						h2{
+							margin-bottom: 20px;
+						}
+					}
+
+					.content {
+						width: 240px;
+						line-height: 2.2em;
+					}
+				}
+
+				.picture {
+					position: relative;
+					.star {
+						position: absolute;
+						width: 24px;
+
+						&.left{
+							left: 25px;
+							top: 25px;
+						}
+
+						&.right{
+							right: 25px;
+							bottom: 25px;
+						}
+					}
+
+					.number{
+						position: absolute;
+						left: 75%;
+						top: -8%;
+						line-height: 0.7;
+					}
+
+					.main-img {
+						// width: 480px;
+						height: 100%;
+						aspect-ratio: 12 / 13;
+						object-fit: cover;
+						object-position: 50% 30%;
+						border-radius: 45px;
+					}
+
+					&::before{
+						@extend %beforeafter;
+						position: absolute;
+						right: 8px;
+						top: 8px;
+						width: 100%;
+						height: 100%;
+						border: .5px solid #000;
+						border-radius: 45px;
+					}
+				}
+			}
+
+			.title-bg {
+				position: absolute;
+				right: -10px;
+				bottom: -20px;
+				z-index: -1;
+
+				h2 {
+					text-align: right;
+					-webkit-text-stroke: 0.3px $gray;
+					color: transparent;
+
+					@include margin-b-last-child(30px);
+				}
+			}
+		}
+
+		.works-section-poster{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			.stars-left {
+				width: 270px;
+				transform: rotateX(180deg);
+				left: 0;
+				bottom: 0;
+			}
+
+			.stars-right {
+				width: 410px;
+				transform: rotateY(180deg);
+				right: 0;
+				top: 0;
+			}
+
+			.main{
+				height: 70%;
+				width: 70%;
+				display: flex;
+				justify-content: space-between;
+				.title{
+					display: flex;
+					flex-direction: column;
+					justify-content: space-between;
+					.top{
+						display: flex;
+						align-items: center;
+						justify-content: space-between;
+						.date{
+							writing-mode: vertical-rl;
+						}
+
+						.number{
+							transform: translateX(10px);
+						}
+					}
+					.content{
+						width: 130px;
+						line-height: 2.2em;
+						padding-left: 45px;
+						border-left: 4px solid #000;
+					}
+				}
+
+				.picture{
+					display: flex;
+					.item{
+						position: relative;
+						@include margin-r-last-child(30px);
+						&::before{
+							position: absolute;
+							right: 5px;
+							top: 5px;
+							@extend %beforeafter;
+							width: 100%;
+							height: 100%;
+							border: .5px solid #000;
+							border-radius: 20px;
+						}
+
+						img{
+							height: 100%;
+							border-radius: 20px;
+						}
+					}
+				}
+			}
+
+			.title-bg {
+				position: absolute;
+				right: -10px;
+				bottom: -20px;
+				z-index: -1;
+
+				h2 {
+					text-align: right;
+					-webkit-text-stroke: 0.3px $gray;
+					color: transparent;
+
+					@include margin-b-last-child(30px);
+				}
+			}
+		}
+
+		// UIUX
+		.websection {
+			.bg {
+				background: $gradient-lume-2;
+			}
+
+			.main {
+				position: relative;
+
+				.left {
+					.qrcord {
+						display: flex;
+						justify-content: space-between;
+						width: 240px;
+
+						.item {
+							display: flex;
+							flex-direction: column;
+							align-items: center;
+
+							img {
+								width: 50px;
+							}
+
+							a {
+								padding: 10px 15px;
+								margin-top: 15px;
+								border-radius: 30px;
+								background: $gradient-lume #fff;
+							}
+						}
+					}
+				}
+
+				.right {
+					position: absolute;
+					right: 0;
+					bottom: 0;
+
+					.envelope {
+						@extend %works-computer;
+
+						.phone {
+							width: 100px;
+							height: fit-content;
+							position: absolute;
+							right: 30px;
+							bottom: 0;
+						}
+
+						.computer {
+							width: 100%;
+							height: fit-content;
+						}
+					}
+				}
+			}
+
+		}
+
+		#portfolio-web {
+			.bg {
+				background: #2C2C2C;
+			}
+
+			.qrcord {
+				.item {
+					a {
+						background: #000;
+						color: #fff;
+					}
+				}
+			}
+		}
+
+		#fmbsshop-web {
+			.bg {
+				background: #A0B1CC;
+			}
+
+			.qrcord {
+				.item {
+					a {
+						background: #A0B1CC;
+						color: #fff;
+					}
+				}
+			}
+		}
+
+		#fmbsleave-web {
+			.bg {
+				background: #7AB0CF;
+			}
+
+			.qrcord {
+				.item {
+					a {
+						background: #7AB0CF;
+						color: #fff;
+					}
+				}
+			}
+
+			.right {
+				height: 100%;
+				.envelope {
+					height: 100%;
+					justify-content: center;
+					.computer {
+						width: fit-content;
+						height: 100%;
+					}
+				}
+			}
+		}
+
+
 	}
 }

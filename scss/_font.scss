@@ -153,6 +153,16 @@
 	transform: rotate(180deg);
 }
 
+.newyork-110-5{
+	font-family: "NewYork";
+	@include font(110px,100,0.05em);
+}
+
+.newyork-150-5{
+	font-family: "NewYork";
+	@include font(150px,100,0.05em);
+}
+
 .newyork-285-5{
 	font-family: "NewYork";
 	@include font(285px,100,0.05em);

@@ -1,6 +1,11 @@
 // 顏色
-$hover:#00FFFF;
-$gray:#666666;
-$light-gray:#CCCCCC;
-$medium-gray:#999999;
-$gradient-w:linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,1));
+$hover: #00FFFF;
+$gray: #666666;
+$light-gray: #CCCCCC;
+$medium-gray: #999999;
+$gradient-w: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+$gradient-lume: linear-gradient(120deg, rgba(164, 213, 190, .3) 30%, rgba(164, 213, 190, 0) 60%),
+    linear-gradient(210deg, rgba(137, 209, 239, .3) 30%, rgba(137, 209, 239, 0) 60%),
+    linear-gradient(340deg, rgba(238, 179, 208, .3) 30%, rgba(238, 179, 208, 0) 60%);
+
+$gradient-lume-2: linear-gradient(220deg, rgba(238, 179, 208, .3), rgba(137, 209, 239, .3), rgba(164, 213, 190, .3));

@@ -907,7 +907,7 @@ body {
 }
 #content .content-main #work-experience .main .time-line {
   display: block;
-  width: 1px;
+  width: 0.5px;
   height: 100%;
   background-color: #000;
   position: absolute;
@@ -2047,4 +2047,30 @@ body {
 #content .content-main #portfolio-web .qrcord .item a {
   background: #000;
   color: #fff;
+}
+#content .content-main #fmbsshop-web .bg {
+  background: #A0B1CC;
+}
+#content .content-main #fmbsshop-web .qrcord .item a {
+  background: #A0B1CC;
+  color: #fff;
+}
+#content .content-main #fmbsleave-web .bg {
+  background: #7AB0CF;
+}
+#content .content-main #fmbsleave-web .qrcord .item a {
+  background: #7AB0CF;
+  color: #fff;
+}
+#content .content-main #fmbsleave-web .right {
+  height: 100%;
+}
+#content .content-main #fmbsleave-web .right .envelope {
+  height: 100%;
+  justify-content: center;
+}
+#content .content-main #fmbsleave-web .right .envelope .computer {
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 100%;
 }/*# sourceMappingURL=style.css.map */

@@ -10,7 +10,6 @@ document.documentElement.style.setProperty('--main-menu-width', `${mainMenuWidth
 
 
 // 角落陰影變色
-// 獲取父層和子層元素
 const anchorMenu = document.getElementById('anchor-menu');
 const anchorMenuItem = Array.from(document.querySelectorAll('#anchor-menu .item'))
 const content = document.getElementById('content');
@@ -19,6 +18,8 @@ const content = document.getElementById('content');
 const lumeWeb = document.getElementById('lume-web');
 const gradientLume = 'linear-gradient(220deg, rgba(238, 179, 208, .3), rgba(137, 209, 239, .3), rgba(164, 213, 190, .3))'
 const portfolioWeb = document.getElementById('portfolio-web');
+const fmbsshopWeb = document.getElementById('fmbsshop-web');
+const fmbsleaveWeb = document.getElementById('fmbsleave-web');
 
 const worksUiuxfrontendSection = Array.from(document.querySelectorAll('#works-uiuxfrontend section'))
 const contentMain = document.querySelectorAll('.content-main');
@@ -54,6 +55,8 @@ createObserver(worksUiuxfrontendSection[0], rightCorner, '#000');
 
 createObserver(lumeWeb, leftCorner, gradientLume);
 createObserver(portfolioWeb, leftCorner, "#2C2C2C");
+createObserver(fmbsshopWeb, leftCorner, "#A0B1CC");
+createObserver(fmbsleaveWeb, leftCorner, "#7AB0CF");
 
 
 worksUiuxfrontendSection.slice(1).forEach(section => {
